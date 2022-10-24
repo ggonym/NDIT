@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!--swiper_slide_link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./font/static/pretendard.css">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    
+
+    <title>React App</title>
+    <style>
+      .swiper {
+        
+        width: 100%;
+        max-width: 1920px;
+        /* height: 100%; */
+        height: 420px;
+        
+      }
+      
+      .swiper-slide {
+       
+        width: 700px;
+        height: 350px;
+        margin-left: 80px;
+        
+        text-align: center;
+        font-size: 18px;
+        background: rgb(253, 205, 205);
+        border-radius: 24px;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 700px;
+        height: 100%;
+        border-radius: 24px;
+        object-fit: cover;
+      }
+      .mySwiper { position: relative; width: 100%; height: 420px; }
+      .mySwiper .swiper-wrapper {
+        justify-content: center;
+      }
+      .mySwiper .swiper-button-next, .swiper-button-prev {
+        position: absolute;  
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;  
+        background-color: rgba(255, 255, 255);  
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        background-image: none;
+      }
+      .mySwiper .swiper-button-next{
+       right: 33%;
+      }
+      .mySwiper .swiper-button-prev{
+       left: 33%;
+      }
+      /*https://jineecode.tistory.com/77*/
+
+      .mySwiper .swiper-pagination {
+        position: absolute;
+        bottom: 30px;
+      }
+    </style>
+    
+
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+      <!-----탑배너---->
+      <div id="top_banner">
+        <div class="inner">
+          <p>신규가입하고 <strong>1만원 쿠폰</strong> 받아가세요 ></p>
+        </div>
+      </div>
+      <!-----헤더------>
+      <div id="header">
+        <div class="inner">
+          <div class="header_search">
+            <div class="logo">
+              <svg width="103" height="30" viewBox="0 0 103 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_203_309)">
+                <path d="M5.808 5.24H2.184V23H5.544V15.872C5.544 14.848 5.488 13.8 5.376 12.728C5.28 11.656 5.192 10.64 5.112 9.68H5.232L7.032 13.496L12.168 23H15.768V5.24H12.408V12.32C12.408 13.328 12.456 14.384 12.552 15.488C12.664 16.592 12.768 17.608 12.864 18.536H12.744L10.968 14.696L5.808 5.24ZM25.4886 23.336C26.3366 23.336 27.1446 23.176 27.9126 22.856C28.6966 22.536 29.3846 22.08 29.9766 21.488C30.5686 20.88 31.0406 20.144 31.3926 19.28C31.7606 18.4 31.9446 17.408 31.9446 16.304C31.9446 15.184 31.7606 14.184 31.3926 13.304C31.0406 12.424 30.5686 11.688 29.9766 11.096C29.3846 10.488 28.6966 10.024 27.9126 9.704C27.1446 9.384 26.3366 9.224 25.4886 9.224C24.6566 9.224 23.8486 9.384 23.0646 9.704C22.2806 10.024 21.5926 10.488 21.0006 11.096C20.4086 11.688 19.9286 12.424 19.5606 13.304C19.2086 14.184 19.0326 15.184 19.0326 16.304C19.0326 17.408 19.2086 18.4 19.5606 19.28C19.9286 20.144 20.4086 20.88 21.0006 21.488C21.5926 22.08 22.2806 22.536 23.0646 22.856C23.8486 23.176 24.6566 23.336 25.4886 23.336ZM25.4886 20.456C24.5766 20.456 23.8726 20.08 23.3766 19.328C22.8806 18.576 22.6326 17.568 22.6326 16.304C22.6326 15.008 22.8806 13.984 23.3766 13.232C23.8726 12.48 24.5766 12.104 25.4886 12.104C26.4006 12.104 27.1046 12.48 27.6006 13.232C28.0966 13.984 28.3446 15.008 28.3446 16.304C28.3446 17.568 28.0966 18.576 27.6006 19.328C27.1046 20.08 26.4006 20.456 25.4886 20.456ZM37.776 9.56H34.896V23H38.4V13.76C39.36 12.752 40.224 12.248 40.992 12.248C41.632 12.248 42.104 12.456 42.408 12.872C42.712 13.272 42.864 14 42.864 15.056V23H46.392V13.76C47.352 12.752 48.216 12.248 48.984 12.248C49.624 12.248 50.096 12.456 50.4 12.872C50.704 13.272 50.856 14 50.856 15.056V23H54.384V14.624C54.384 12.928 54.048 11.608 53.376 10.664C52.704 9.704 51.648 9.224 50.208 9.224C49.328 9.224 48.544 9.448 47.856 9.896C47.184 10.344 46.544 10.904 45.936 11.576C45.616 10.808 45.16 10.224 44.568 9.824C43.976 9.424 43.2 9.224 42.24 9.224C41.36 9.224 40.592 9.432 39.936 9.848C39.28 10.264 38.672 10.768 38.112 11.36H38.016L37.776 9.56ZM61.3408 23.24C62.1088 23.24 62.8288 23.096 63.5008 22.808C64.1888 22.52 64.8208 22.128 65.3968 21.632H65.4688L65.7328 23H68.6128V15.152C68.6128 11.2 66.8928 9.224 63.4528 9.224C62.3968 9.224 61.3808 9.376 60.4048 9.68C59.4448 9.984 58.5968 10.36 57.8608 10.808L58.9168 13.328C59.5248 12.928 60.1648 12.616 60.8368 12.392C61.5248 12.168 62.1808 12.056 62.8048 12.056C63.8288 12.056 64.4848 12.264 64.7728 12.68C65.0448 13.256 65.1488 13.824 65.0848 14.384C62.3008 14.464 60.2928 14.904 59.0608 15.704C57.8448 16.488 57.2768 17.704 57.3568 19.352C57.3568 19.928 57.4528 20.456 57.6448 20.936C57.8368 21.416 58.1008 21.832 58.4368 22.184C58.7888 22.52 59.2128 22.784 59.7088 22.976C60.2048 23.152 60.7488 23.24 61.3408 23.24ZM62.4208 20.552C61.9088 20.552 61.4768 20.392 61.1248 20.072C60.7888 19.752 60.6128 19.312 60.5968 18.752C60.5808 18.272 60.7248 17.856 61.0288 17.504C61.3488 17.152 61.8928 16.92 62.6608 16.808C63.0448 16.744 63.4368 16.696 63.8368 16.664C64.2528 16.616 64.6688 16.576 65.0848 16.544V19.256C64.6688 19.672 64.2448 19.992 63.8128 20.216C63.3968 20.424 62.9328 20.536 62.4208 20.552ZM76.9365 23.336C77.6565 23.336 78.3285 23.168 78.9525 22.832C79.5925 22.496 80.1605 22.088 80.6565 21.608H80.7285L81.0165 23H83.8725V3.848H80.3445V8.576L80.4885 10.688C80.0085 10.24 79.5125 9.888 79.0005 9.632C78.4885 9.36 77.8485 9.224 77.0805 9.224C76.3605 9.224 75.6565 9.392 74.9685 9.728C74.2965 10.048 73.6965 10.512 73.1685 11.12C72.6405 11.728 72.2165 12.472 71.8965 13.352C71.5925 14.216 71.4405 15.2 71.4405 16.304C71.4405 17.408 71.5685 18.392 71.8245 19.256C72.0805 20.12 72.4485 20.856 72.9285 21.464C73.4085 22.072 73.9845 22.536 74.6565 22.856C75.3445 23.176 76.1045 23.336 76.9365 23.336ZM77.8485 20.432C75.9925 20.432 75.0645 19.04 75.0645 16.256C75.0645 15.584 75.1365 14.992 75.2805 14.48C75.4405 13.968 75.6405 13.536 75.8805 13.184C76.1365 12.832 76.4325 12.568 76.7685 12.392C77.1045 12.216 77.4645 12.128 77.8485 12.128C78.2645 12.128 78.6805 12.208 79.0965 12.368C79.5125 12.512 79.9285 12.768 80.3445 13.136V19.04C79.9605 19.552 79.5605 19.912 79.1445 20.12C78.7445 20.328 78.3125 20.432 77.8485 20.432ZM87.3418 7.4H90.8458V3.992H87.3418V7.4ZM87.3178 9.56V23H90.8218V9.56H87.3178ZM99.2066 23.336C99.7986 23.336 100.327 23.28 100.791 23.168C101.255 23.072 101.671 22.96 102.039 22.832L101.463 20.264C101.287 20.344 101.079 20.416 100.839 20.48C100.599 20.528 100.367 20.552 100.143 20.552C98.9266 20.552 98.3186 19.8 98.3186 18.296V12.344H101.631V9.56H98.3186V5.96H95.3666L94.9586 9.56L92.8946 9.728V12.344H94.7906V18.296C94.7906 19.048 94.8706 19.736 95.0306 20.36C95.1906 20.984 95.4466 21.52 95.7986 21.968C96.1506 22.4 96.6066 22.736 97.1666 22.976C97.7266 23.216 98.4066 23.336 99.2066 23.336Z" fill="black"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_203_309">
+                <rect width="103" height="30" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
+
+          <form action="" id="top_search">
+            <div class="top_sch_box">             
+                <input type="text" name="search" id="search" placeholder="서비스 전문가를 검색해보세요" required>
+               <div class="sch_btn">
+                <button>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_203_314" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                    <rect width="24" height="24" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_203_314)">
+                    <path d="M19.6 21L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16C7.68333 16 6.146 15.371 4.888 14.113C3.62933 12.8543 3 11.3167 3 9.5C3 7.68333 3.62933 6.14567 4.888 4.887C6.146 3.629 7.68333 3 9.5 3C11.3167 3 12.8543 3.629 14.113 4.887C15.371 6.14567 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L21 19.6L19.6 21ZM9.5 14C10.75 14 11.8127 13.5627 12.688 12.688C13.5627 11.8127 14 10.75 14 9.5C14 8.25 13.5627 7.18733 12.688 6.312C11.8127 5.43733 10.75 5 9.5 5C8.25 5 7.18733 5.43733 6.312 6.312C5.43733 7.18733 5 8.25 5 9.5C5 10.75 5.43733 11.8127 6.312 12.688C7.18733 13.5627 8.25 14 9.5 14Z" fill="#1C1B1F"/>
+                    </g>
+                    </svg>
+                    
+                </button>
+               </div>
+            </div>
+          </form>
+        
+          <div class="header_util">
+            <ul>
+              <li class="head_util_msg"><a href="">메시지</a></li>
+              <li class="head_util_myndit"><a href="">마이앤딧</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="welcome">
+        <div class="inner">
+          <div class="welcom_txt">
+            <img src="image/Welcome, Nomad.png" alt="">
+            <div class="arrow">
+            
+              <span>Nomadit의 여정 보기</span>
+              <a href="" class="about_link">
+                <svg width="485" height="74" viewBox="0 0 485 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 32C2.23858 32 0 34.2386 0 37C0 39.7614 2.23858 42 5 42V32ZM483.536 40.5355C485.488 38.5829 485.488 35.4171 483.536 33.4645L451.716 1.64466C449.763 -0.307961 446.597 -0.307961 444.645 1.64466C442.692 3.59728 442.692 6.76311 444.645 8.71573L472.929 37L444.645 65.2843C442.692 67.2369 442.692 70.4027 444.645 72.3553C446.597 74.308 449.763 74.308 451.716 72.3553L483.536 40.5355ZM5 42H480V32H5V42Z" fill="url(#paint0_linear_210_455)"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_210_455" x1="26.4998" y1="14.0021" x2="521" y2="62.0013" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#37C3FF"/>
+                  <stop offset="1" stop-color="#BF39FF"/>
+                  </linearGradient>
+                  </defs>
+                  </svg>
+              </a> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+        <div class="swiper-slide"><img src="image/slidebanner_01.png" alt=""></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        cssMode: true,
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        mousewheel: true,
+        keyboard: true,
+      });
+    </script>
+
+    <div id="main_category_cnt">
+      <div class="inner">
+        <div class="main_category_box">
+          <ul class="main_category_list">
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon1.png" alt=""></div><span>기획</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon2.png" alt=""></div><span>디자인</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon3.png" alt=""></div><span>개발</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon4.png" alt=""></div><span>기획/개발</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon5.png" alt=""></div><span>기획/디자인</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon6.png" alt=""></div><span>디자인/개발</span></a></li>
+            <li><a href=""><div class="main_ctg_li_ico_box"><img src="./image/category_icon7.png" alt=""></div><span>기획/디자인/개발</span></a></li>
+           
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <!--최신 프로젝트-->
+    <div id="new_project">
+      <div class="inner">
+        <div class="tit_h2">
+          <h2>최신프로젝트</h2>
+          <ul>
+            <li><a href="">#기획</a></li>
+            <li><a href="">#디자인</a></li>
+            <li><a href="">#개발</a></li>
+            <li><a href="">#기획/개발</a></li>
+            <li><a href="">#디자인/개발</a></li>
+            <li><a href="">#기획/디자인/개발</a></li>
+          </ul>
+        </div>
+        <div class="new_pjt_list_box">
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NDPICKS -->
+    <div id="ndpicks">
+      <div class="inner">
+        <div class="ndpicks_head">
+          <div class="ndpicks_tit">ND<span>PICKS</span></div>
+          <div class="ndpicks_more">
+            <a href=""> 더보기 +</a>
+          </div>
+        </div>
+        <div class="ndpicks_banner_cnt">
+          <div class="ndpicks_copytext">
+            <ul>
+              <li>원하는 프로젝트를 쉽게찾아요</li>
+              <li>취향을 분석해 원하시는<br>
+                프로젝트를 추천해드립니다!
+              </li>
+              <li><a href="">로그인하고 더 많은 추천받기</a></li>
+            </ul>
+          </div>
+          <div class="ndpicks_ad_box">
+            <div class="ndpicks_ad_list">
+              <a href="">
+                <div class="ndpicks_ad_list_img">
+                  <img src="image/ndpicks_ad_1.png" alt="">
+                </div>
+                <div class="ndpicks_ad_list_desc">
+                  <span>자유작업</span>
+                  <p>
+                    언제 어디서든 자유롭게
+                    낮,밤 상관없이 프로젝트를
+                    진행하세요.
+                  </p>
+                </div>
+              </a>  
+            </div>
+
+            <div class="ndpicks_ad_list">
+              <a href="">
+                <div class="ndpicks_ad_list_img">
+                  <img src="image/ndpicks_ad_2.png" alt="">
+                </div>
+                <div class="ndpicks_ad_list_desc">
+                  <span>종합추천</span>
+                  <p>
+                    고객님의 취향을 분석해
+                    고민하여 저희가 
+                    고른 프로젝트를 확인하세요.
+                  </p>
+                </div>
+              </a>  
+            </div>
+
+            <div class="ndpicks_ad_list">
+              <a href="">
+                <div class="ndpicks_ad_list_img">
+                  <img src="image/ndpicks_ad_3.png" alt="">
+                </div>
+                <div class="ndpicks_ad_list_desc">
+                  <span>취향분석</span>
+                  <p>
+                    고객님의 취향을 분석해
+                    고민하여 취향에 맞게
+                    선택을 도와드립니다.
+                  </p>
+                </div>
+              </a>  
+            </div>
+
+            <div class="ndpicks_ad_list">
+              <a href="">
+                <div class="ndpicks_ad_list_img">
+                  <img src="image/ndpicks_ad_4.png" alt="">
+                </div>
+                <div class="ndpicks_ad_list_desc">
+                  <span>다중선택</span>
+                  <p>
+                    다양한 프로젝트를 선택하시면
+                    프로젝트별로 추천을 해드려요.
+
+                  </p>
+                </div>
+              </a>  
+            </div>
+
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <!--인기 프로젝트-->
+    <div id="new_project">
+      <div class="inner">
+        <div class="tit_h2">
+          <h2>인기프로젝트</h2>
+          <ul>
+            <li><a href="">#기획</a></li>
+            <li><a href="">#디자인</a></li>
+            <li><a href="">#개발</a></li>
+            <li><a href="">#기획/개발</a></li>
+            <li><a href="">#디자인/개발</a></li>
+            <li><a href="">#기획/디자인/개발</a></li>
+          </ul>
+        </div>
+        <div class="new_pjt_list_box">
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="new_pjt_list">
+            <div class="new_pjt_img">
+              <img src="image/project_img.png" alt="">
+            </div>
+            <div class="new_pjt_info">
+              <ul class="new_pjt_info_keyword">
+                <li>[상주]</li>
+                <li>[서울]</li>
+                <li>[9개월]</li>
+                <li>[개발자]</li>
+                <li>[디자이너]</li>
+              </ul>
+              <div class="new_pjt_tit">
+                <p>
+                  엔디트 사이트 개발(프론트엔드, 디자이너)
+                  외주 플랫폼 및 회사 홈페이지 리뉴얼 개발
+                </p>
+              </div>
+
+              <div class="new_pjt_period">
+                <span class="new_pjt_dday">마감4일전</span>
+                <span class="new_pjt_like"><strong>10명이</strong> 찜했습니다.</span>
+              </div>
+              <div class="new_pjt_line"></div>
+              <div class="new_pjt_skill">
+                <ul>
+                  <li>Java</li>
+                  <li>javascript</li>
+                  <li>html</li>
+                  <li>css</li>
+                  <li>figma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-----bottom_banner------->
+      <div id="bottom_bnr">
+        <div class="inner">
+          <span>노매딧에서 빠르고 안전한 it 아웃소싱을 경험해보세요.</span>
+          <a href="bottom_bnr_link">무료로 프로젝트 등록하기</a>
+        </div>
+      </div>
+
+    <!-----footer------->  
+    <div id="footer">
+      <div class="foot_header">
+        <div class="foot_logo">
+          <svg width="101" height="21" viewBox="0 0 101 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.808 2.24H0.184V20H3.544V12.872C3.544 11.848 3.488 10.8 3.376 9.728C3.28 8.656 3.192 7.64 3.112 6.68H3.232L5.032 10.496L10.168 20H13.768V2.24H10.408V9.32C10.408 10.328 10.456 11.384 10.552 12.488C10.664 13.592 10.768 14.608 10.864 15.536H10.744L8.968 11.696L3.808 2.24ZM23.4886 20.336C24.3366 20.336 25.1446 20.176 25.9126 19.856C26.6966 19.536 27.3846 19.08 27.9766 18.488C28.5686 17.88 29.0406 17.144 29.3926 16.28C29.7606 15.4 29.9446 14.408 29.9446 13.304C29.9446 12.184 29.7606 11.184 29.3926 10.304C29.0406 9.424 28.5686 8.688 27.9766 8.096C27.3846 7.488 26.6966 7.024 25.9126 6.704C25.1446 6.384 24.3366 6.224 23.4886 6.224C22.6566 6.224 21.8486 6.384 21.0646 6.704C20.2806 7.024 19.5926 7.488 19.0006 8.096C18.4086 8.688 17.9286 9.424 17.5606 10.304C17.2086 11.184 17.0326 12.184 17.0326 13.304C17.0326 14.408 17.2086 15.4 17.5606 16.28C17.9286 17.144 18.4086 17.88 19.0006 18.488C19.5926 19.08 20.2806 19.536 21.0646 19.856C21.8486 20.176 22.6566 20.336 23.4886 20.336ZM23.4886 17.456C22.5766 17.456 21.8726 17.08 21.3766 16.328C20.8806 15.576 20.6326 14.568 20.6326 13.304C20.6326 12.008 20.8806 10.984 21.3766 10.232C21.8726 9.48 22.5766 9.104 23.4886 9.104C24.4006 9.104 25.1046 9.48 25.6006 10.232C26.0966 10.984 26.3446 12.008 26.3446 13.304C26.3446 14.568 26.0966 15.576 25.6006 16.328C25.1046 17.08 24.4006 17.456 23.4886 17.456ZM35.776 6.56H32.896V20H36.4V10.76C37.36 9.752 38.224 9.248 38.992 9.248C39.632 9.248 40.104 9.456 40.408 9.872C40.712 10.272 40.864 11 40.864 12.056V20H44.392V10.76C45.352 9.752 46.216 9.248 46.984 9.248C47.624 9.248 48.096 9.456 48.4 9.872C48.704 10.272 48.856 11 48.856 12.056V20H52.384V11.624C52.384 9.928 52.048 8.608 51.376 7.664C50.704 6.704 49.648 6.224 48.208 6.224C47.328 6.224 46.544 6.448 45.856 6.896C45.184 7.344 44.544 7.904 43.936 8.576C43.616 7.808 43.16 7.224 42.568 6.824C41.976 6.424 41.2 6.224 40.24 6.224C39.36 6.224 38.592 6.432 37.936 6.848C37.28 7.264 36.672 7.768 36.112 8.36H36.016L35.776 6.56ZM59.3408 20.24C60.1088 20.24 60.8288 20.096 61.5008 19.808C62.1888 19.52 62.8208 19.128 63.3968 18.632H63.4688L63.7328 20H66.6128V12.152C66.6128 8.2 64.8928 6.224 61.4528 6.224C60.3968 6.224 59.3808 6.376 58.4048 6.68C57.4448 6.984 56.5968 7.36 55.8608 7.808L56.9168 10.328C57.5248 9.928 58.1648 9.616 58.8368 9.392C59.5248 9.168 60.1808 9.056 60.8048 9.056C61.8288 9.056 62.4848 9.264 62.7728 9.68C63.0448 10.256 63.1488 10.824 63.0848 11.384C60.3008 11.464 58.2928 11.904 57.0608 12.704C55.8448 13.488 55.2768 14.704 55.3568 16.352C55.3568 16.928 55.4528 17.456 55.6448 17.936C55.8368 18.416 56.1008 18.832 56.4368 19.184C56.7888 19.52 57.2128 19.784 57.7088 19.976C58.2048 20.152 58.7488 20.24 59.3408 20.24ZM60.4208 17.552C59.9088 17.552 59.4768 17.392 59.1248 17.072C58.7888 16.752 58.6128 16.312 58.5968 15.752C58.5808 15.272 58.7248 14.856 59.0288 14.504C59.3488 14.152 59.8928 13.92 60.6608 13.808C61.0448 13.744 61.4368 13.696 61.8368 13.664C62.2528 13.616 62.6688 13.576 63.0848 13.544V16.256C62.6688 16.672 62.2448 16.992 61.8128 17.216C61.3968 17.424 60.9328 17.536 60.4208 17.552ZM74.9365 20.336C75.6565 20.336 76.3285 20.168 76.9525 19.832C77.5925 19.496 78.1605 19.088 78.6565 18.608H78.7285L79.0165 20H81.8725V0.847999H78.3445V5.576L78.4885 7.688C78.0085 7.24 77.5125 6.888 77.0005 6.632C76.4885 6.36 75.8485 6.224 75.0805 6.224C74.3605 6.224 73.6565 6.392 72.9685 6.728C72.2965 7.048 71.6965 7.512 71.1685 8.12C70.6405 8.728 70.2165 9.472 69.8965 10.352C69.5925 11.216 69.4405 12.2 69.4405 13.304C69.4405 14.408 69.5685 15.392 69.8245 16.256C70.0805 17.12 70.4485 17.856 70.9285 18.464C71.4085 19.072 71.9845 19.536 72.6565 19.856C73.3445 20.176 74.1045 20.336 74.9365 20.336ZM75.8485 17.432C73.9925 17.432 73.0645 16.04 73.0645 13.256C73.0645 12.584 73.1365 11.992 73.2805 11.48C73.4405 10.968 73.6405 10.536 73.8805 10.184C74.1365 9.832 74.4325 9.568 74.7685 9.392C75.1045 9.216 75.4645 9.128 75.8485 9.128C76.2645 9.128 76.6805 9.208 77.0965 9.368C77.5125 9.512 77.9285 9.768 78.3445 10.136V16.04C77.9605 16.552 77.5605 16.912 77.1445 17.12C76.7445 17.328 76.3125 17.432 75.8485 17.432ZM85.3418 4.4H88.8458V0.991999H85.3418V4.4ZM85.3178 6.56V20H88.8218V6.56H85.3178ZM97.2066 20.336C97.7986 20.336 98.3266 20.28 98.7906 20.168C99.2546 20.072 99.6706 19.96 100.039 19.832L99.4626 17.264C99.2866 17.344 99.0786 17.416 98.8386 17.48C98.5986 17.528 98.3666 17.552 98.1426 17.552C96.9266 17.552 96.3186 16.8 96.3186 15.296V9.344H99.6306V6.56H96.3186V2.96H93.3666L92.9586 6.56L90.8946 6.728V9.344H92.7906V15.296C92.7906 16.048 92.8706 16.736 93.0306 17.36C93.1906 17.984 93.4466 18.52 93.7986 18.968C94.1506 19.4 94.6066 19.736 95.1666 19.976C95.7266 20.216 96.4066 20.336 97.2066 20.336Z" fill="black"/>
+          </svg> 
+        </div>     
+          <div class="foot_nav_box">
+            <ul class="foot_nav_menu">
+              <li><a href="">노매딧</a></li>
+              <li><a href="">이용약관</a></li>
+              <li><a href=""><strong>개인정보 처리방침</strong></a></li>
+              <li><a href="">1:1 문의</a></li>
+            </ul>
+            <ul class="nomadit_cs">
+              <li><strong>고객센터</strong><span>02-1234-5678</span></li>
+              <li><strong>운영시간</strong><span>10:30-18:00(점심시간 12:30-13:30)</span></li>
+            </ul>
+          </div> 
+      </div>  
+
+      <div class="foot_copy">
+        <p>해당 웹사이트는 테스트 중입니다.</p>
+        <span>Copyright ⓒ 2022 gongyumee, All right reserved.</span>
+      </div>
+
+      
+    </div>
+
+      <!--root-->
+  </div>
+  </body>
+</html>
